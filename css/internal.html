@@ -1,0 +1,64 @@
+  <!-- 
+    internal : we apply internal css in <style> p { color: red;}  </style>  
+    -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        h1,h2,h3{
+            color: red;background-color: cadetblue;
+        }
+
+        .test1{
+            color: aqua;background-color: blue;text-align: left;
+        }
+        .test2{
+            color: rgb(60, 8, 218);background-color: rgb(11, 235, 26);text-align: right;
+        }
+        .upper{
+            text-transform: uppercase;
+        }
+        .underline{
+          text-decoration: underline;  
+        }
+
+        #demo{
+            background-color: black;
+            color: white;
+        }
+
+        h4.myhead{
+            text-shadow: 5px 5px 2px red;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+    <h1>Hi i am inline css</h1>
+    <h1>Hi i am inline css</h1>
+    <h1>Hi i am inline css</h1>
+    <h2>Hi i am inline css</h2>
+    <h3>Hi i am inline css</h3>
+
+    <p class="test1 underline">Hi i am A Paragraph</p>
+    <p class="test1 upper">Hi i am A Paragraph</p>
+    <p class="test1 underline">Hi i am A Paragraph</p>
+
+    <p class="test2">Hi i am B Paragraph</p>
+    <p class="test2 upper underline">Hi i am B Paragraph</p>
+    <p class="test2 myhead">Hi i am B Paragraph</p>
+
+    <p id="demo"> Hi i am # style</p>
+
+    <h4 class="myhead">Hi i am h4</h4>
+
+
+</body>
+</html>

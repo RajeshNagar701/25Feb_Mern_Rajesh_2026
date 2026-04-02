@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+	li{
+		display:inline;
+	}
+	
+	p{
+		display:inline;
+	}
+
+
+	a{
+		display:block;
+		background-color:pink;
+	}
+	
+	img{
+		display:block;
+	}
+	
+	.remove{
+		/* display:none; */   /* div remove */
+		visibility:hidden;      /* div Hide */
+	}
+	
+	.row{
+		display:flex;
+		flex-wrap: wrap;
+	}
+	.row1{
+		display:flex;
+	}
+	
+	.col{
+		width:25%;
+		height:auto;
+		background-color:yellow;
+		border:solid 2px red;
+		box-sizing:border-box;
+	}
+	
+	
+	
+</style>
+</head>
+<body>
+
+<p>Display a list of links as a horizontal menu:</p>
+
+
+<!-- Block scope to inline convert -->
+<ul>
+  <li style="background-color:red"><a href="/html/default.asp" target="_blank">HTML</a></li>
+  <li><a href="/css/default.asp" target="_blank">CSS</a></li>
+  <li><a href="/js/default.asp" target="_blank">JavaScript</a></li>
+</ul>
+
+<!-- Block scope to inline convert -->
+<p style="background-color:red">Hello How are you</p>
+<p style="background-color:green">Hello How are you</p>
+
+
+<!-- inline scope to block convert -->
+<a href="">Home</a>
+<a href="">Home</a>
+<a href="">Home</a>
+<a href="">Home</a>
+
+<!-- inline scope to block convert -->
+<img src="a.jpg" />
+<img src="b.jpg" />
+<img src="c.jpg" />
+
+<hr>
+
+
+	<h1>Head 1</h1>
+	<h1 class="remove">Head 2</h1>
+	<h1>Head 3	</h1>
+
+<hr>
+
+<div class="row1">
+	<div class="col">
+		<h1>Box1</h1>
+	</div>
+	<div class="col">
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+	</div>
+	<div class="col">
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+	</div>
+	<div class="col">
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+	</div>
+	<div class="col">
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+	</div>
+	<div class="col">
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+	</div>
+	<div class="col">
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+	</div>
+	<div class="col">
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+	</div>
+	
+	<div class="col">
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+	</div>
+	<div class="col">
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+		<h1>Box1</h1>
+	</div>
+</div>
+
+</body>
+</html>
