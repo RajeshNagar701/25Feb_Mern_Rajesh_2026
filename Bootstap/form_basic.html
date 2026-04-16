@@ -140,14 +140,79 @@ only get 100 char
 		</div>	
 	</form>	
 	
+	
+	
+	
+	
 </div>
 
 
+<div class="container">
 
 
+	<select class="form-select">
+	  <option>1</option>
+	  <option>2</option>
+	  <option>3</option>
+	  <option>4</option>
+	</select>
 
-</div>
+	<hr>
+	
+	<div class="form-check">
+	  <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something" checked>
+	  <label class="form-check-label">Option 1</label>
+	</div>
+	
+	<div class="form-check">
+	  <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Option 1
+	  <label class="form-check-label" for="radio1"></label>
+	</div>
+	<div class="form-check">
+	  <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">Option 2
+	  <label class="form-check-label" for="radio2"></label>
+	</div>
+	<div class="form-check">
+	  <input type="radio" class="form-check-input" disabled>Option 3
+	  <label class="form-check-label"></label>
+	</div>
+	
+	<hr>
+	
+	<div class="form-floating mb-3 mt-3">
+	  <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
+	  <label for="email">Email</label>
+	</div>
 
+	<div class="form-floating mt-3 mb-3">
+	  <input type="text" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+	  <label for="pwd">Password</label>
+	</div>
 
+	<hr>
+	
+	<form action="/action_page.php" class="was-validated">
+	  <div class="mb-3 mt-3">
+		<label for="uname" class="form-label">Username:</label>
+		<input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
+		<div class="valid-feedback">sachu.</div>
+		<div class="invalid-feedback">Khotu.</div>
+	  </div>
+	  <div class="mb-3">
+		<label for="pwd" class="form-label">Password:</label>
+		<input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+		<div class="valid-feedback">Valid.</div>
+		<div class="invalid-feedback">Please fill out this field.</div>
+	  </div>
+	  <div class="form-check mb-3">
+		<input class="form-check-input" type="checkbox" id="myCheck" name="remember" required>
+		<label class="form-check-label" for="myCheck">I agree on blabla.</label>
+		<div class="valid-feedback">Valid.</div>
+		<div class="invalid-feedback">Check this checkbox to continue.</div>
+	  </div>
+	  <button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+	
+	
 </body>
 </html>
