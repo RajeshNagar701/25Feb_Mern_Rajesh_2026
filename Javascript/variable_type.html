@@ -4,7 +4,7 @@
 JavaScript Datatypes
 One of the most fundamental characteristics of a programming language is the 
 set of data types it supports. These are the type of values that can be represented 
-and manipulated in a programming language.
+and manipulated in a programming language.<h1>${students}</h1>
 JavaScript allows you to work with three primitive data types −
 
 Numbers, eg. 123, 120.50 etc.
@@ -12,7 +12,7 @@ Strings of text e.g. "This text string" etc.
 Boolean e.g. true or false.
 
 
-Naming variables
+	Naming variables Rule
 Variable names are pretty flexible as long as you follow a few rules:
 Start them with a letter, underscore _, or dollar sign $.   name123
 After the first letter, you can use numbers, as well as letters, underscores, or dollar signs.
@@ -64,27 +64,21 @@ You can also declare multiple variables
 
 
 
-<h1 id="number"></h1>
 
-<h1 id="string"></h1>
-
-<h1 id="arr"></h1>
-
-<h1 id="arr_index"></h1>
 
 <script>
  
  var number=15;
- document.getElementById('number').innerHTML=number;
+ document.getElementById('number').innerHTML=`<h1>${number}</h1>`;
 
  var name="Raj Nagar";
- document.getElementById('string').innerHTML=name;
-
+ document.getElementById('string').innerHTML=`<h1>${name}</h1>`;
+				// 0     1        2         3        4        5
  var students=["Jinal","Sahil","Kamlesh","Jainik","Jainam","Saloni","Kajal"];
  
- document.getElementById('arr').innerHTML=students;
+ document.getElementById('arr').innerHTML=`<h1>${students}</h1>`;;
 
- document.getElementById('arr_index').innerHTML=students[2];
+ document.getElementById('arr_index').innerHTML=`<h1>${students[1]}</h1>`;
  
  
  
