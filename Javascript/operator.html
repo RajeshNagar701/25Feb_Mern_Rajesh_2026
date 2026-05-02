@@ -7,16 +7,16 @@ Operators
    
 Arithmetic Operators  					+ - * / % 
 increement & decreement operator    	a++ a-- 
-Comparison/Relational Operators  		== ===  > < <=  >= != 
+Comparison/Relational Operators  		> < <=  >= != == ===  
 
 Logical Operators      					&&  ||   !   // use with if(condition)
-Assignment Operators  					a=10 =+ =- =* =/ =%   a=10  a=a+b; a=+b
+Assignment Operators  					a=10 = =+ =- =* =/ =%   a=10  a=a+b; a=+b
 Bitwise Operators						&  |  ^ ~ << >> >>>
-Special/Miscellaneous/conditional 	    ? :
+Special/Miscellaneous/conditional 	    ? :  if else
 
 typeof Operator   The typeof operator evaluates to "number", "string", or "boolean" 
-if its operand is a number, string, or boolean value and returns true or false based 
-on the evaluation. 
+				  if its operand is a number, string, or boolean value and returns true or false based 
+				  on the evaluation. 
 -->
    
 	
@@ -43,8 +43,8 @@ on the evaluation.
 			a++;
             var b = 50;
 			b--;
-			document.write(a);  
-			document.write(b);
+			document.write(a);   // 12 
+			document.write(b);   // 49
         */
 		 
 		
@@ -151,7 +151,7 @@ on the evaluation.
 		
 		
 			var a=20;
-			if( typeof a=="number")      // if(!(a<=b))    if(a<=b || a<=c) 
+			if( typeof a=="number")    
 			{
 				document.write('a is Integer <br>');
 			}
@@ -161,7 +161,7 @@ on the evaluation.
 			}
 			
 			var b="10";
-			if( typeof b=="string")      // if(!(a<=b))    if(a<=b || a<=c) 
+			if( typeof b=="string")      
 			{
 				document.write('b is string');
 			}
