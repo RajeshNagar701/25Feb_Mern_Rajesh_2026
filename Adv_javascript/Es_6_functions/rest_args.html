@@ -7,6 +7,8 @@
 <p>
 The rest parameter (...) allows a function to treat an indefinite number of
 arguments as an array:</p>
+
+<h1>arguments:keyword</h1>
 <script>
 
 /*
@@ -19,11 +21,8 @@ data(1, 2, 3, 4); //we can provide inifite numbers as argument
 
 
 
-
-
-
 /*
-
+// ... 
 function data(...abc)   // abc array 
 {
 	for(var i=0;i<abc.length;i++)
@@ -35,12 +34,12 @@ data(1,2,4,7,8,6,8,9,11,12); //we can provide inifite numbers as argument
 
 */
 
-
+// arguments keyword
 function data()
 {
 	for(var i=0;i<arguments.length;i++)  // arguments its keyword direct auto set all arugument in it
 	{
-		document.write("<h6>"+ arguments[i] + "</h6>"); 
+		document.write("<p>"+ arguments[i] + "</p>"); 
 	}
 }
 data(1, 2, 3, 4, 5, 6, 7 ,8); //we can provide inifite numbers as argument
