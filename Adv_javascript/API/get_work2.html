@@ -15,7 +15,7 @@
   <h2>My Photos</h2>
  
   <div class="row justify-content-center" id="data" >
-	<div class="mt-5 spinner-border text-danger " id="spinner"></div>
+	<div class="spinner-border text-danger" id="spin"></div>
   </div>
   
 </div>
@@ -29,7 +29,7 @@
 	.then((resp)=> resp.json())
 	.then((obj)=> {  
 		showData(obj);
-		document.getElementById('spinner').style.display='none';
+		document.getElementById('spin').style.display="none";
 	});
 	
 	

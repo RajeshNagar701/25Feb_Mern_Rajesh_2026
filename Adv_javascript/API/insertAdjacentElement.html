@@ -1,0 +1,40 @@
+
+<!--
+
+The insertAdjacentHTML() method of the Element interface 
+parses the specified text as HTML or XML and inserts the 
+resulting nodes into the DOM tree at a specified position.
+
+element.insertAdjacentHTML(position, content);
+
+Parameters
+
+"beforebegin"
+Before the element. Only valid if the element is in the DOM tree and has a parent element.
+
+"afterbegin"
+Just inside the element, before its first child.
+
+"beforeend":
+Just inside the element, after its last child.
+
+"afterend"
+After the element. Only valid if the element is in the DOM tree and has a parent element.
+
+
+-->
+<div id="test" style="background-color:red;color:white;border:solid 2px black; 
+padding:10px">
+	<h1>Hi i am Html</h1>
+</div>
+
+<script>
+	
+	
+	//document.getElementById('test').innerHTML="<h1>Hi i am Javascript</h1>";
+	
+		var mydiv=document.getElementById('test');
+		mydiv.insertAdjacentHTML('afterend',"<h1>Hi i am Javascript</h1>");
+	
+	
+</script>
