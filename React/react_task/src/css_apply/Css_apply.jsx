@@ -1,6 +1,9 @@
 import React from 'react'
 import './Css_apply.css'  // import external css
 
+
+// all css merge in index.html & conflict all class in app then solution is module.css
+
 function Css_apply() {
 
   const myhead={color:'pink',backgroundColor:'red'}
