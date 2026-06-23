@@ -6,6 +6,8 @@ import Layout from "./Layout/Layout";
 import Module_css from "./Module_css/Module_css";
 import Props_main from "./Props/Props_main";
 import Sass from "./Sass/Sass";
+import Class_state from "./state/class/Class_state";
+import Func_state from "./state/func/Func_state";
 
 
 function App() {
@@ -20,12 +22,12 @@ function App() {
 
         //<Css_apply />
         //<Module_css/>
-        <Sass/>
+        //<Sass/>
 
         //<Props_main />
 
-        
-
+        //<Class_state/>
+        <Func_state/>
 
       }
       
