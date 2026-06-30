@@ -10,6 +10,8 @@ import Props_main from "./Props/Props_main";
 import Sass from "./Sass/Sass";
 import Class_state from "./state/class/Class_state";
 import Func_state from "./state/func/Func_state";
+import MUI from "./MUI/MUI";
+import Bootstrap from "./Bootstrap/Bootstrap";
 
 
 function App() {
@@ -32,9 +34,12 @@ function App() {
         //<Func_state/>
 
         //<LifeClass/>
-        <LifeFunc/>
+        //<LifeFunc/>
+
+        <Bootstrap/>
+        //<MUI/>
       }
-      
+     
     </div>
   );
 }
