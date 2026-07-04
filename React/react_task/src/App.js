@@ -12,6 +12,9 @@ import Class_state from "./state/class/Class_state";
 import Func_state from "./state/func/Func_state";
 import MUI from "./MUI/MUI";
 import Bootstrap from "./Bootstrap/Bootstrap";
+import Styled_component from "./Styled_component/Styled_component";
+import Main_drilling from "./Props_drilling/Main_drilling";
+import Use_context from "./UseContext/Use_context";
 
 
 function App() {
@@ -36,10 +39,17 @@ function App() {
         //<LifeClass/>
         //<LifeFunc/>
 
-        <Bootstrap/>
+        //<Bootstrap/>
         //<MUI/>
+
+        //<Styled_component/>
+      
+        //<Main_drilling/>
+        <Use_context/>
       }
      
+      
+
     </div>
   );
 }
