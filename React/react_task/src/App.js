@@ -7,7 +7,7 @@ import LifeClass from "./LifeCycle/Class/LifeClass";
 import LifeFunc from "./LifeCycle/Func/LifeFunc";
 import Module_css from "./Module_css/Module_css";
 import Props_main from "./Props/Props_main";
-import Sass from "./Sass/Sass";
+//import Sass from "./Sass/Sass";
 import Class_state from "./state/class/Class_state";
 import Func_state from "./state/func/Func_state";
 import MUI from "./MUI/MUI";
@@ -15,6 +15,7 @@ import Bootstrap from "./Bootstrap/Bootstrap";
 import Styled_component from "./Styled_component/Styled_component";
 import Main_drilling from "./Props_drilling/Main_drilling";
 import Use_context from "./UseContext/Use_context";
+import App_routing from "./Routing/App_routing";
 
 
 function App() {
@@ -45,7 +46,10 @@ function App() {
         //<Styled_component/>
       
         //<Main_drilling/>
-        <Use_context/>
+        //<Use_context/>
+
+        //routing
+        <App_routing/>
       }
      
       
