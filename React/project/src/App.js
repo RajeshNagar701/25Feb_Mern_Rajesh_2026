@@ -3,8 +3,7 @@ import Header from "./website/component/Header";
 import Home from "./website/pages/Home";
 import Footer from "./website/component/Footer";
 import Admin_login from "./admin/pages/Admin_login";
-import Aheader from "./admin/component/Aheader";
-import Afooter from "./admin/component/Afooter";
+
 import Dashboard from "./admin/pages/Dashboard";
 import About from "./website/pages/About";
 import Header_slide from "./website/component/Header_slide";
@@ -12,6 +11,11 @@ import Menu from "./website/pages/Menu";
 import Book from "./website/pages/Book";
 import Login from "./website/pages/Login";
 import Signup from "./website/pages/Signup";
+import Add_category from "./admin/pages/Add_category";
+import Manage_category from "./admin/pages/Manage_category";
+import Add_product from "./admin/pages/Add_product";
+import Manage_product from "./admin/pages/Manage_product";
+import Manage_user from "./admin/pages/Manage_user";
 
 
 function App() {
@@ -36,8 +40,13 @@ function App() {
         }
       
         <Route path="/admin-login" element={<><Admin_login/></>}></Route>
-        <Route path="/dashboard" element={<><Aheader/><Dashboard/><Afooter/></>}></Route>
-
+        <Route path="/dashboard" element={<><Dashboard/></>}></Route>
+        <Route path="/add_category" element={<><Add_category/></>}></Route>
+        <Route path="/manage_category" element={<><Manage_category/></>}></Route>
+        <Route path="/add_product" element={<><Add_product/></>}></Route>
+        <Route path="/manage_product" element={<><Manage_product/></>}></Route>
+        
+         <Route path="/manage_user" element={<><Manage_user/></>}></Route>
       </Routes>
     </BrowserRouter>
 
