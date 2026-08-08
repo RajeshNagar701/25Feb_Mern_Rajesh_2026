@@ -36,6 +36,14 @@ function Aheader() {
             <span className="nav-icon"><i className="bi bi-person-plus" aria-hidden="true" /></span>
             <span className="nav-text">User</span>
           </NavLink>
+          <NavLink className="nav-link" to="/manage_order">
+            <span className="nav-icon"><i className="bi bi-person-plus" aria-hidden="true" /></span>
+            <span className="nav-text">Order</span>
+          </NavLink>
+          <NavLink className="nav-link" to="/manage_booking">
+            <span className="nav-icon"><i className="bi bi-person-plus" aria-hidden="true" /></span>
+            <span className="nav-text">Booking</span>
+          </NavLink>
           
           <a className="nav-link" href="profile.html">
             <span className="nav-icon"><i className="bi bi-person-badge" aria-hidden="true" /></span>
