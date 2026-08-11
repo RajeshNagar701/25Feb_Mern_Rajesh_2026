@@ -1,10 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Afooter from '../component/Afooter'
 import ANav from '../component/ANav'
 import Aheader from '../component/Aheader'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 function Manage_product() {
+
+  useEffect(() => {
+    getdata();
+  }, []);
+
+  const [data, setData] = useState([]);
+
+  const getdata = async () => {
+    const res = await axios.get(`http://localhost:3000/product`);
+    setData(res.data);
+  }
+
+  const deletedata = async (id) => {
+    const res = await axios.delete(`http://localhost:3000/product/${id}`);
+    getdata();
+    return res;
+  }
+
   return (
     <div className="admin-shell">
       <Aheader />
@@ -36,38 +55,40 @@ function Manage_product() {
                   <thead>
                     <tr>
                       <th>ID</th>
+                      <th>Category ID</th>
                       <th>Product Name</th>
-                      <th>Product Image</th>
+                      <th>Price</th>
+                      <th>Description</th>
+                      <th>Image</th>
                       <th className="text-end">Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className="fw-semibold">#HMD-2048</td>
-                      <td>Pizza</td>
-                      <td>
-                        <div className="table-media">
-                          <img className="product-thumb" src="../assets/images/ecommerce/product-1.jpg" alt="Wireless Headset" />
-                        </div>
-                      </td>
-                      <td className="text-end">
-                        <button className="btn btn-danger btn-sm me-2" type="button">Delete</button>
-                        <button className="btn btn-primary btn-sm" type="button">Edit</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="fw-semibold">#HMD-2050</td>
-                      <td>Burgur</td>
-                      <td>
-                        <div className="table-media">
-                          <img className="product-thumb" src="../assets/images/ecommerce/product-1.jpg" alt="Wireless Headset" />
-                        </div>
-                      </td>
-                      <td className="text-end">
-                        <button className="btn btn-danger btn-sm me-2" type="button">Delete</button>
-                        <button className="btn btn-primary btn-sm" type="button">Edit</button>
-                      </td>
-                    </tr>
+
+                    {
+                      data.map((value, index, arr) => {
+                        return (
+                          <tr key={index}>
+                            <td className="fw-semibold">#{value.id}</td>
+                            <td>{value.cate_id}</td>
+                            <td>{value.name}</td>
+                            <td>{value.price}</td>
+                            <td>{value.description}</td>
+                            <td>
+                              <div className="table-media">
+                                <img className="product-thumb" src={value.image} />
+                              </div>
+                            </td>
+                            <td className="text-end">
+                              <button onClick={()=>deletedata(value.id)} className="btn btn-danger btn-sm me-2" type="button">Delete</button>
+                              <button className="btn btn-primary btn-sm" type="button">Edit</button>
+                            </td>
+                          </tr>
+                        )
+
+                      })
+                    }
+
                   </tbody>
                 </table>
               </div>

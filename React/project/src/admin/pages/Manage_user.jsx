@@ -1,10 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Afooter from '../component/Afooter'
 import ANav from '../component/ANav'
 import Aheader from '../component/Aheader'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 function Manage_user() {
+
+  useEffect(() => {
+    getdata();
+  }, []);
+
+  const [data, setData] = useState([]);
+
+  const getdata = async () => {
+    const res = await axios.get(`http://localhost:3000/user`);
+    setData(res.data);
+  }
+
+  const deletedata = async (id) => {
+    const res = await axios.delete(`http://localhost:3000/user/${id}`);
+    getdata();
+    return res;
+  }
+
+
   return (
     <div className="admin-shell">
       <Aheader />
@@ -41,39 +61,26 @@ function Manage_user() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className="fw-semibold">#HMD-2048</td>
-                      <td>Rajesh</td>
-                      <td>rajesh@gmail.com</td>
-                      <td>1234</td>
-                      <td>9722041171</td>
-                      <td className="text-end">
-                        <button className="btn btn-danger btn-sm me-2" type="button">Delete</button>
-                        <button className="btn btn-primary btn-sm" type="button">Edit</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="fw-semibold">#HMD-2048</td>
-                      <td>Adeeba</td>
-                      <td>adeeba@gmail.com</td>
-                      <td>1234</td>
-                      <td>8822041171</td>
-                      <td className="text-end">
-                        <button className="btn btn-danger btn-sm me-2" type="button">Delete</button>
-                        <button className="btn btn-primary btn-sm" type="button">Edit</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="fw-semibold">#HMD-2048</td>
-                      <td>Mamata</td>
-                      <td>mamata@gmail.com</td>
-                      <td>1234</td>
-                      <td>8822041171</td>
-                      <td className="text-end">
-                        <button className="btn btn-danger btn-sm me-2" type="button">Delete</button>
-                        <button className="btn btn-primary btn-sm" type="button">Edit</button>
-                      </td>
-                    </tr>
+
+                    {
+                      data.map((value, index, arr) => {
+                        return (
+                          <tr key={index}>
+                            <td className="fw-semibold">#{value.id}</td>
+                            <td>{value.name}</td>
+                            <td>{value.email}</td>
+                            <td>{value.password}</td>
+                            <td>{value.mobile}</td>
+                            <td className="text-end">
+                              <button onClick={()=>deletedata(value.id)} className="btn btn-danger btn-sm me-2" type="button">Delete</button>
+                              <button className="btn btn-primary btn-sm" type="button">Edit</button>
+                            </td>
+                          </tr>
+                        )
+
+                      })
+                    }
+
                   </tbody>
                 </table>
               </div>
@@ -81,7 +88,7 @@ function Manage_user() {
 
           </div>
         </main>
-        
+
         <Afooter />
       </div>
 

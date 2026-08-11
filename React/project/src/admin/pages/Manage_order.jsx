@@ -1,10 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Afooter from '../component/Afooter'
 import ANav from '../component/ANav'
 import Aheader from '../component/Aheader'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 function Manage_order() {
+
+  useEffect(() => {
+    getdata();
+  }, []);
+
+  const [data, setData] = useState([]);
+
+  const getdata = async () => {
+    const res = await axios.get(`http://localhost:3000/order`);
+    setData(res.data);
+  }
+
+  const deletedata = async (id) => {
+    const res = await axios.delete(`http://localhost:3000/order/${id}`);
+    getdata();
+    return res;
+  }
+
+
   return (
     <div className="admin-shell">
       <Aheader />
@@ -33,47 +53,31 @@ function Manage_order() {
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Password</th>
-                      <th>Mobile</th>
+                      <th>Category Id</th>
+                      <th>Total</th>
+                      <th>Status</th>
                       <th className="text-end">Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className="fw-semibold">#HMD-2048</td>
-                      <td>Rajesh</td>
-                      <td>rajesh@gmail.com</td>
-                      <td>1234</td>
-                      <td>9722041171</td>
-                      <td className="text-end">
-                        <button className="btn btn-danger btn-sm me-2" type="button">Delete</button>
-                        <button className="btn btn-primary btn-sm" type="button">Edit</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="fw-semibold">#HMD-2048</td>
-                      <td>Adeeba</td>
-                      <td>adeeba@gmail.com</td>
-                      <td>1234</td>
-                      <td>8822041171</td>
-                      <td className="text-end">
-                        <button className="btn btn-danger btn-sm me-2" type="button">Delete</button>
-                        <button className="btn btn-primary btn-sm" type="button">Edit</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="fw-semibold">#HMD-2048</td>
-                      <td>Mamata</td>
-                      <td>mamata@gmail.com</td>
-                      <td>1234</td>
-                      <td>8822041171</td>
-                      <td className="text-end">
-                        <button className="btn btn-danger btn-sm me-2" type="button">Delete</button>
-                        <button className="btn btn-primary btn-sm" type="button">Edit</button>
-                      </td>
-                    </tr>
+
+                    {
+                      data.map((value, index, arr) => {
+                        return (
+                          <tr key={index}>
+                            <td className="fw-semibold">#{value.id}</td>
+                            <td>{value.cart_id}</td>
+                            <td>{value.total}</td>
+                            <td>{value.status}</td>
+                            <td className="text-end">
+                              <button onClick={()=>deletedata(value.id)} className="btn btn-danger btn-sm me-2" type="button">Delete</button>
+                              <button className="btn btn-primary btn-sm" type="button">Edit</button>
+                            </td>
+                          </tr>
+                        )
+                      })
+                    }
+
                   </tbody>
                 </table>
               </div>
@@ -81,7 +85,7 @@ function Manage_order() {
 
           </div>
         </main>
-        
+
         <Afooter />
       </div>
 
