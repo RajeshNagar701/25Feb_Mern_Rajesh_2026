@@ -1,10 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Afooter from '../component/Afooter'
 import ANav from '../component/ANav'
 import Aheader from '../component/Aheader'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 function Add_category() {
+
+  const [formValue,setFormvalue]=useState({
+    name:"",
+    image:""
+  });
+
+  const changeHandel=(e)=>{
+      setFormvalue({...formValue,id:new Date().getTime().toString(),[e.target.name]:e.target.value});
+      console.log(formValue);
+  }
+
+  const submitHandel=async(e)=>{
+    e.preventDefault();  // not refresh after form submit
+    const res=await axios.post(`http://localhost:3000/category`,formValue);
+    setFormvalue({...formValue,name:"",image:""});
+    alert('Category Added Success');
+    return false;
+  }
+
+
   return (
     <div className="admin-shell">
       <Aheader />
@@ -29,17 +50,15 @@ function Add_category() {
             <section className="row g-3">
               <div className="col-12 col-xl-12">
                 <div className='panel'>
-                  <form className="needs-validation" noValidate>
+                  <form method='post' onSubmit={submitHandel}>
                     <div className="row g-3">
                       <div className="col-md-12">
                         <label className="form-label" htmlFor="formName">Category name</label>
-                        <input className="form-control" id="formName" required />
-                        <div className="invalid-feedback">Full name is required.</div>
+                        <input className="form-control" value={formValue.name} onChange={changeHandel} name="name" id="formName" />
                       </div>
                       <div className="col-md-12">
                         <label className="form-label" htmlFor="formEmail">Category Image Upload</label>
-                        <input className="form-control" id="formEmail" type="file" required />
-                        <div className="invalid-feedback">Valid file is required.</div>
+                        <input className="form-control" value={formValue.image} onChange={changeHandel} name="image" id="formEmail" type="url" />
                       </div>
 
                     </div>

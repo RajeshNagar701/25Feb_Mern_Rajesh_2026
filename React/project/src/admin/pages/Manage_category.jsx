@@ -28,6 +28,9 @@ function Manage_category() {
     getdata();
     return res;
   }
+
+
+  
   return (
     <div className="admin-shell">
       <Aheader />

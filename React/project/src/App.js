@@ -50,6 +50,7 @@ function App() {
           <Route path="/manage_user" element={<><Manage_user /></>}></Route>
           <Route path="/manage_order" element={<><Manage_order /></>}></Route>
           <Route path="/manage_booking" element={<><Manage_booking /></>}></Route>
+          
         </Routes>
       </BrowserRouter>
 

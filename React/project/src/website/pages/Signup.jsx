@@ -1,7 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 function Signup() {
+
+    const [formValue, setFormvalue] = useState({
+        name: "",
+        email: "",
+        password: "",
+        mobile: ""
+    });
+
+    const changeHandel = (e) => {
+        setFormvalue({ ...formValue, id: new Date().getTime().toString(), [e.target.name]: e.target.value });
+        console.log(formValue);
+    }
+
+    const submitHandel = async (e) => {
+        e.preventDefault();  // not refresh after form submit
+        const res = await axios.post(`http://localhost:3000/user`, formValue);
+        setFormvalue({ ...formValue, name: "", email: "",password:"",mobile:"" });
+        alert('Signup Success');
+        return false;
+    }
+
+
+
     return (
         <div>
             <section className="book_section layout_padding">
@@ -14,19 +38,19 @@ function Signup() {
                     <div className="row">
                         <div className="offset-md-3 col-md-6">
                             <div className="form_container">
-                                <form action>
+                                <form method='post' onSubmit={submitHandel}>
 
                                     <div>
-                                        <input type="text" className="form-control" placeholder="Your Name" />
+                                        <input type="text" value={formValue.name} name='name' onChange={changeHandel} className="form-control" placeholder="Your Name" />
                                     </div>
                                     <div>
-                                        <input type="email" className="form-control" placeholder="Your Email" />
+                                        <input type="email" value={formValue.email} name='email' onChange={changeHandel} className="form-control" placeholder="Your Email" />
                                     </div>
                                     <div>
-                                        <input type="password" className="form-control" placeholder="Your Password" />
+                                        <input type="password" value={formValue.password} name='password' onChange={changeHandel} className="form-control" placeholder="Your Password" />
                                     </div>
                                     <div>
-                                        <input type="number" className="form-control" placeholder="Your Mobile" />
+                                        <input type="number" value={formValue.mobile} name='mobile' onChange={changeHandel} className="form-control" placeholder="Your Mobile" />
                                     </div>
 
                                     <div className="btn_box">

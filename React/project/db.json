@@ -9,6 +9,21 @@
       "id": "2",
       "name": "Burgur",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7SFB_M250yF0j4F05G_LLlTIYtJaZAIt6UTzZrYgcKg&s=10"
+    },
+    {
+      "id": "gO7miOyGRQg",
+      "name": "Sandwitch",
+      "image": "https://www.eatingwell.com/thmb/cwCxxIpDoKC8cQk7cTnY9FpyDE4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Veggie--Cream-Cheese-Sandwich-Beauty-1x1-56919_preview_maxWidth_4000_maxHeight_4000_ppi_300_quality_100-fdb2de8c05234e5a97f37fa3ad485220.jpg"
+    },
+    {
+      "id": "KdXXWwOOOb8",
+      "name": "MilkShake",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN0NvnoaT6G9tucfiszo6WeXOiBeSSRt2v7o9k5o8TjQ&s=10"
+    },
+    {
+      "name": "Pasta",
+      "image": "https://www.cookwithkushi.com/wp-content/uploads/2016/07/best_white_sauce_pasta_bechamel_sauce-500x500.jpg",
+      "id": "yXwYXsAcDxs"
     }
   ],
   "product": [
@@ -44,6 +59,27 @@
       "email": "raj@gmail.com",
       "password": "abxc",
       "mobile": "123456789"
+    },
+    {
+      "name": "Raj nagar",
+      "email": "raj@gmail.com",
+      "password": "1234",
+      "mobile": "1234567891",
+      "id": "wH2Gz4UT1pc"
+    },
+    {
+      "name": "Adeeba",
+      "email": "adeeba@gmail.com",
+      "password": "1234",
+      "mobile": "1236547891",
+      "id": "ejT8scHp6YI"
+    },
+    {
+      "name": "Mamta",
+      "email": "mamta@gmail.com",
+      "password": "1425",
+      "mobile": "1236547885",
+      "id": "NpZJw1enUtA"
     }
   ],
   "cart": [
