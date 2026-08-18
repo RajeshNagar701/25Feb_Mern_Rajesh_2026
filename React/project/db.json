@@ -54,13 +54,6 @@
   ],
   "user": [
     {
-      "id": "1",
-      "name": "raj",
-      "email": "raj@gmail.com",
-      "password": "abxc",
-      "mobile": "123456789"
-    },
-    {
       "name": "Raj nagar",
       "email": "raj@gmail.com",
       "password": "1234",
@@ -122,8 +115,8 @@
   "admin": [
     {
       "id": "1",
-      "email": "1",
-      "password": "8"
+      "email": "admin@gmail.com",
+      "password": "1234"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

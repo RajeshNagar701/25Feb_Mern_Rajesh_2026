@@ -18,6 +18,7 @@ import Manage_product from "./admin/pages/Manage_product";
 import Manage_user from "./admin/pages/Manage_user";
 import Manage_order from "./admin/pages/Manage_order";
 import Manage_booking from "./admin/pages/Manage_booking";
+import User_profile from "./website/pages/User_profile";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route path="/book" element={<><Header /><Book /><Footer /></>}></Route>
           <Route path="/login" element={<><Header /><Login /><Footer /></>}></Route>
           <Route path="/signup" element={<><Header /><Signup /><Footer /></>}></Route>
+          <Route path="/user_profile" element={<><Header /><User_profile /><Footer /></>}></Route>
 
           {
             // Admin routes
