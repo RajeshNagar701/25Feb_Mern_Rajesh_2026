@@ -19,6 +19,7 @@ import Manage_user from "./admin/pages/Manage_user";
 import Manage_order from "./admin/pages/Manage_order";
 import Manage_booking from "./admin/pages/Manage_booking";
 import User_profile from "./website/pages/User_profile";
+import Edit_profile from "./website/pages/Edit_profile";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <Route path="/login" element={<><Header /><Login /><Footer /></>}></Route>
           <Route path="/signup" element={<><Header /><Signup /><Footer /></>}></Route>
           <Route path="/user_profile" element={<><Header /><User_profile /><Footer /></>}></Route>
+          <Route path="/edit_profile/:id" element={<><Header /><Edit_profile /><Footer /></>}></Route>
 
           {
             // Admin routes

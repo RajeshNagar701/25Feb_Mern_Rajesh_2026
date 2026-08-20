@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link, useNavigate } from 'react-router-dom';
 
 function User_profile() {
 
+    const redirect=useNavigate();
     useEffect(() => {
         getdata();
     }, []);
@@ -47,9 +49,9 @@ function User_profile() {
                                                         <h6>
                                                             <span>Id : {data.id}</span>
                                                         </h6>
-                                                        <a href>
-                                                            Edot Profile
-                                                        </a>
+                                                        <button className='btn btn-warning' onClick={()=>redirect('/edit_profile/'+ data.id)}>
+                                                            Edit Profile
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>

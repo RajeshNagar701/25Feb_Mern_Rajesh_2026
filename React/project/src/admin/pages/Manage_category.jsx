@@ -29,8 +29,30 @@ function Manage_category() {
     return res;
   }
 
+  const editHandel = async (id) => {
+    const res = await axios.get(`http://localhost:3000/category/${id}`);
+    console.log(res.data);
+    setFormvalue(res.data);
+  }
 
-  
+  const [formValue, setFormvalue] = useState({
+    name: "",
+    image: ""
+  });
+
+  const changeHandel = (e) => {
+    setFormvalue({ ...formValue, [e.target.name]: e.target.value });
+    console.log(formValue);
+  }
+
+  const submitHandel = async (e) => {
+    e.preventDefault();  // not refresh after form submit
+    const res = await axios.put(`http://localhost:3000/category/${formValue.id}`, formValue);
+    alert('Category Updated Success');
+    getdata();
+    return false;
+  }
+
   return (
     <div className="admin-shell">
       <Aheader />
@@ -81,8 +103,54 @@ function Manage_category() {
                               </div>
                             </td>
                             <td className="text-end">
-                              <button onClick={()=>deletedata(value.id)} className="btn btn-danger btn-sm me-2" type="button">Delete</button>
-                              <button className="btn btn-primary btn-sm" type="button">Edit</button>
+                              <button onClick={() => deletedata(value.id)} className="btn btn-danger btn-sm me-2" type="button">Delete</button>
+                              <button onClick={() => editHandel(value.id)} data-bs-toggle="modal" data-bs-target="#myModal" className="btn btn-primary btn-sm" type="button">Edit</button>
+
+                              <div className="modal" id="myModal">
+                                <div className="modal-dialog">
+                                  <div className="modal-content">
+                                    {/* Modal Header */}
+                                    <div className="modal-header">
+                                      <h4 className="modal-title">Modal Heading</h4>
+                                      <button type="button" className="btn-close" data-bs-dismiss="modal" />
+                                    </div>
+                                    {/* Modal body */}
+                                    <div className="modal-body">
+                                      <section className="row g-3">
+                                        <div className="col-12 col-xl-12">
+                                          <div className='panel'>
+                                            <form method='post' onSubmit={submitHandel}>
+                                              <div className="row g-3">
+                                                <div className="col-md-12">
+                                                  <label className="form-label" htmlFor="formName">Category name</label>
+                                                  <input className="form-control" value={formValue.name} onChange={changeHandel} name="name" id="formName" />
+                                                </div>
+                                                <div className="col-md-12">
+                                                  <label className="form-label" htmlFor="formEmail">Category Image Upload</label>
+                                                  <input className="form-control" value={formValue.image} onChange={changeHandel} name="image" id="formEmail" type="url" />
+                                                </div>
+
+                                              </div>
+                                              <div className="d-flex justify-content-end mt-4">
+                                                <button className="btn btn-primary" type="submit">
+                                                  <i className="bi bi-send" aria-hidden="true"  data-bs-dismiss="modal" /> Save
+                                                </button>
+                                              </div>
+                                            </form>
+                                          </div>
+
+                                        </div>
+                                      </section>
+                                    </div>
+                                    {/* Modal footer */}
+                                    <div className="modal-footer">
+                                      <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+
                             </td>
                           </tr>
                         )
@@ -94,6 +162,8 @@ function Manage_category() {
 
                   </tbody>
                 </table>
+
+
               </div>
             </section>
 
