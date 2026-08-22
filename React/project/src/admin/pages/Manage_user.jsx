@@ -24,7 +24,25 @@ function Manage_user() {
     return res;
   }
 
-
+  const changeStatus = async (id) => {
+    const res = await axios.get(`http://localhost:3000/user/${id}`);
+    if (res.data.status == "Block") {
+      const upd_data = { status: "Unblock" }
+      const upd = await axios.patch(`http://localhost:3000/user/${id}`, upd_data);
+      alert('Status Unblock Success');
+      getdata();
+      return false;
+    }
+    else {
+      const upd_data = { status: "Block" }
+      const upd = await axios.patch(`http://localhost:3000/user/${id}`, upd_data);
+      alert('Status Block Success');
+      sessionStorage.removeItem('uid');
+      sessionStorage.removeItem('uname');
+      getdata();
+      return false;
+    }
+  }
   return (
     <div className="admin-shell">
       <Aheader />
@@ -72,8 +90,9 @@ function Manage_user() {
                             <td>{value.password}</td>
                             <td>{value.mobile}</td>
                             <td className="text-end">
-                              <button onClick={()=>deletedata(value.id)} className="btn btn-danger btn-sm me-2" type="button">Delete</button>
-                              <button className="btn btn-primary btn-sm" type="button">Edit</button>
+                              <button onClick={() => deletedata(value.id)} className="btn btn-danger btn-sm me-2" type="button">Delete</button>
+                              <button onClick={() => changeStatus(value.id)} type="button" className="btn btn-primary btn-sm me-2">{value.status}</button>
+                              <button className="btn btn-success btn-sm" type="button">Edit</button>
                             </td>
                           </tr>
                         )

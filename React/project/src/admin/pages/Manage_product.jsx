@@ -24,6 +24,29 @@ function Manage_product() {
     return res;
   }
 
+  const changeStatus = async (id) => {
+    const res = await axios.get(`http://localhost:3000/product/${id}`);
+    if(res.data.status=="InStock")
+    {
+        const upd_data={status:"OutStock"}
+        const upd=await axios.patch(`http://localhost:3000/product/${id}`,upd_data);
+        alert('Status OutStock Success');
+        getdata();
+        return false;
+    }
+    else
+    {
+        const upd_data={status:"InStock"}
+        const upd=await axios.patch(`http://localhost:3000/product/${id}`,upd_data);
+        alert('Status InStock Success');
+        getdata();
+        return false;
+    }
+    
+  }
+
+  
+
   return (
     <div className="admin-shell">
       <Aheader />
@@ -81,6 +104,7 @@ function Manage_product() {
                             </td>
                             <td className="text-end">
                               <button onClick={()=>deletedata(value.id)} className="btn btn-danger btn-sm me-2" type="button">Delete</button>
+                              <button onClick={()=>changeStatus(value.id)} type="button" className="btn btn-primary btn-sm me-2">{value.status}</button>
                               <button className="btn btn-primary btn-sm" type="button">Edit</button>
                             </td>
                           </tr>

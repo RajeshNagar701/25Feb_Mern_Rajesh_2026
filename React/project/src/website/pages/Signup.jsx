@@ -12,7 +12,7 @@ function Signup() {
     });
 
     const changeHandel = (e) => {
-        setFormvalue({ ...formValue, id: new Date().getTime().toString(), [e.target.name]: e.target.value });
+        setFormvalue({ ...formValue, id: new Date().getTime().toString(),status:"Unblock", [e.target.name]: e.target.value });
         console.log(formValue);
     }
 

@@ -19,20 +19,16 @@
       "id": "KdXXWwOOOb8",
       "name": "Milk Shake",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN0NvnoaT6G9tucfiszo6WeXOiBeSSRt2v7o9k5o8TjQ&s=10"
-    },
-    {
-      "name": "Pasta",
-      "image": "https://www.cookwithkushi.com/wp-content/uploads/2016/07/best_white_sauce_pasta_bechamel_sauce-500x500.jpg",
-      "id": "yXwYXsAcDxs"
     }
   ],
   "product": [
     {
       "id": "1",
       "cate_id": 1,
-      "name": "Margarita Pizza",
-      "price": "599",
-      "description": "Mix Veg Margarita Pizza",
+      "name": "Margreeta Pizza",
+      "price": "799",
+      "description": "Mix 7 Margreeta Pizza",
+      "status": "OutStock",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStU2cPTGS16xFrrzMvAodxLizI1fn__FRO633e0PJUBUUQdBsBkKcHX6loMOzuQ8ZKbfeZZATex8tWwpyWBKqbsAyWZ2DTFd-cMRocxozN&s=10"
     },
     {
@@ -41,6 +37,7 @@
       "name": "7 Chesszy Pizza",
       "price": "799",
       "description": "Mix 7 Chesszy Pizza",
+      "status": "OutStock",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStU2cPTGS16xFrrzMvAodxLizI1fn__FRO633e0PJUBUUQdBsBkKcHX6loMOzuQ8ZKbfeZZATex8tWwpyWBKqbsAyWZ2DTFd-cMRocxozN&s=10"
     },
     {
@@ -49,7 +46,26 @@
       "name": "Veg Burgur",
       "price": "199",
       "description": "Mix Veg Burgur",
+      "status": "InStock",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7SFB_M250yF0j4F05G_LLlTIYtJaZAIt6UTzZrYgcKg&s=10"
+    },
+    {
+      "cate_id": "gO7miOyGRQg",
+      "name": "Veg Sanwitch",
+      "price": "200",
+      "description": "All mix vegetable sandwich",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW277CVU7X0-xLBffbdmlCnDWc8avtqOETmQ8RzP2mO0u-rTAo2A-2lCdWxljVe_h2WU6F0T7VfFpirHVeu4uz5TMTtK9yOZZcqXgJeuid&s=10",
+      "id": "08Hz7e-qKCg",
+      "status": "InStock"
+    },
+    {
+      "cate_id": "KdXXWwOOOb8",
+      "name": "Chocolate Milk Shake",
+      "price": "199",
+      "description": "Chocolate Milk Shake",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUjh2mA9x6lF9EbHr_eYnyyz94QRNyvZadsqv4-5OvZg&s=10",
+      "id": "J3OZAqNAaas",
+      "status": "InStock"
     }
   ],
   "user": [
@@ -58,21 +74,32 @@
       "email": "rajnagarn@gmail.com",
       "password": "1234",
       "mobile": "9722041171",
-      "id": "wH2Gz4UT1pc"
+      "id": "wH2Gz4UT1pc",
+      "status": "Block"
     },
     {
       "name": "Adeeba",
       "email": "adeeba@gmail.com",
       "password": "1234",
       "mobile": "1236547891",
-      "id": "ejT8scHp6YI"
+      "id": "ejT8scHp6YI",
+      "status": "Unblock"
     },
     {
       "name": "Mamta",
       "email": "mamta@gmail.com",
       "password": "1425",
       "mobile": "1236547885",
-      "id": "NpZJw1enUtA"
+      "id": "NpZJw1enUtA",
+      "status": "Unblock"
+    },
+    {
+      "name": "pinal",
+      "email": "pinal@gmail.com",
+      "password": "1234",
+      "mobile": "1234567891",
+      "id": "dKgHK8-by20",
+      "status": "Unblock"
     }
   ],
   "cart": [

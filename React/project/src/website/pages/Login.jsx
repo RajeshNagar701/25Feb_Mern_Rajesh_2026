@@ -14,31 +14,34 @@ function Login() {
         console.log(formValue);
     }
 
-    const redirect=useNavigate(); // for any page redirect
+    const redirect = useNavigate(); // for any page redirect
     const submitHandel = async (e) => {
-        e.preventDefault();  
+        e.preventDefault();
         const res = await axios.get(`http://localhost:3000/user?email=${formValue.email}`,);
         //console.log(res.data);
-        if(res.data.length>0){
+        if (res.data.length > 0) {
 
-            if(res.data[0].password==formValue.password)
-            {
-                sessionStorage.setItem('uid',res.data[0].id);
-                sessionStorage.setItem('uname',res.data[0].name);
-
-                alert('Login Success !');
-                return redirect('/');
+            if (res.data[0].password == formValue.password) {
+                if (res.data[0].status == "Unblock") {
+                    sessionStorage.setItem('uid', res.data[0].id);
+                    sessionStorage.setItem('uname', res.data[0].name);
+                    alert('Login Success !');
+                    return redirect('/');
+                }
+                else {
+                    setFormvalue({ ...formValue, email: "", password: "" });
+                    alert('Login Failed ! Block Account, Contact Customer Care !');
+                    return false;
+                }
             }
-            else
-            {
-                setFormvalue({ ...formValue,email: "",password:""});
+            else {
+                setFormvalue({ ...formValue, email: "", password: "" });
                 alert('Login Failed ! Password Missmatch !');
                 return false;
             }
         }
-        else
-        {
-            setFormvalue({ ...formValue,email: "",password:""});
+        else {
+            setFormvalue({ ...formValue, email: "", password: "" });
             alert('Login Failed ! Email dose not exits !');
             return false;
         }
@@ -56,13 +59,13 @@ function Login() {
                     <div className="row">
                         <div className="offset-md-3 col-md-6">
                             <div className="form_container">
-                                <form action="" method='post'  onSubmit={submitHandel}>
+                                <form action="" method='post' onSubmit={submitHandel}>
 
                                     <div>
                                         <input type="email" value={formValue.email} onChange={changeHandel} name='email' className="form-control" placeholder="Your Email" />
                                     </div>
                                     <div>
-                                        <input type="password"  value={formValue.password} onChange={changeHandel} name='password' className="form-control" placeholder="Your Password" />
+                                        <input type="password" value={formValue.password} onChange={changeHandel} name='password' className="form-control" placeholder="Your Password" />
                                     </div>
 
                                     <div className="btn_box">

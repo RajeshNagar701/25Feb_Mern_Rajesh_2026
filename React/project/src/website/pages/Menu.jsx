@@ -16,13 +16,11 @@ function Menu() {
 
     const [product, setProduct] = useState([]);
     const getdata1 = async (id) => {
-        if(id)
-        {
+        if (id) {
             const res = await axios.get(`http://localhost:3000/product?cate_id=${id}`);
             setProduct(res.data);
-        }   
-        else
-        { 
+        }
+        else {
             const res = await axios.get(`http://localhost:3000/product`);
             setProduct(res.data);
         }
@@ -41,11 +39,12 @@ function Menu() {
                         </h2>
                     </div>
                     <ul className="filters_menu">
-                        <li className='active' onClick={()=>getdata1("")}>All</li>
+                        <li className='active' onClick={() => getdata1("")}>All</li>
                         {
                             category.map((value, index, arr) => {
                                 return (
-                                    <li key={index} onClick={()=>getdata1(value.id)}>
+
+                                    <li key={index} onClick={() => getdata1(value.id)}>
                                         {value.name}
                                     </li>
                                 )
@@ -56,33 +55,35 @@ function Menu() {
                         <div className="row grid">
                             {
                                 product.map((value, index, arr) => {
-                                    return (
-                                        <div className="col-sm-6 col-lg-4 all pizza">
-                                            <div className="box">
-                                                <div>
-                                                    <div className="img-box">
-                                                        <img src={value.image} class="rounded-circle" alt />
-                                                    </div>
-                                                    <div className="detail-box">
-                                                        <h5>
-                                                            Delicious Pizza
-                                                        </h5>
-                                                        <p>
-                                                            Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit, magnam voluptatem repellendus sed eaque
-                                                        </p>
-                                                        <div className="options">
-                                                            <h6>
-                                                                $20
-                                                            </h6>
-                                                            <a href="">
-                                                                Add
-                                                            </a>
+                                    if (value.status == "InStock") {
+                                        return (
+                                            <div className="col-sm-6 col-lg-4 all pizza">
+                                                <div className="box">
+                                                    <div>
+                                                        <div className="img-box">
+                                                            <img src={value.image} class="rounded-circle" alt />
+                                                        </div>
+                                                        <div className="detail-box">
+                                                            <h5>
+                                                                {value.name}
+                                                            </h5>
+                                                            <p>
+                                                                {value.description}
+                                                            </p>
+                                                            <div className="options">
+                                                                <h6>
+                                                                    ${value.price}
+                                                                </h6>
+                                                                <a href="">
+                                                                    Add
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    )
+                                        )
+                                    }
                                 })
                             }
 

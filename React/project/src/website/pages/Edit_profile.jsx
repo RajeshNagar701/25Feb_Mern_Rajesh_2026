@@ -31,7 +31,7 @@ function Edit_profile() {
 
     const submitHandel = async (e) => {
         e.preventDefault();  // not refresh after form submit
-        const res = await axios.put(`http://localhost:3000/user/${id}`, formValue);
+        const res = await axios.patch(`http://localhost:3000/user/${id}`, formValue);
         redirect('/user_profile');
         alert('Update Success');
     }

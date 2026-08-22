@@ -1,10 +1,45 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Afooter from '../component/Afooter'
 import ANav from '../component/ANav'
 import Aheader from '../component/Aheader'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 function Add_product() {
+
+
+  useEffect(() => {
+    getdata();
+  }, []);
+
+  const [data, setData] = useState([]);
+  const getdata = async () => {
+    const res = await axios.get(`http://localhost:3000/category`);
+    setData(res.data);
+  }
+
+
+
+  const [formValue, setFormvalue] = useState({
+    cate_id: "",
+    name: "",
+    price: "",
+    description: "",
+    image: ""
+  });
+
+  const changeHandel = (e) => {
+    setFormvalue({ ...formValue, id: new Date().getTime().toString(), status: "InStock", [e.target.name]: e.target.value });
+    console.log(formValue);
+  }
+
+  const submitHandel = async (e) => {
+    e.preventDefault();  // not refresh after form submit
+    const res = await axios.post(`http://localhost:3000/product`, formValue);
+    setFormvalue({ ...formValue, name: "", price: "", description: "", image: "" });
+    alert('Product Added Success');
+    return false;
+  }
   return (
     <div className="admin-shell">
       <Aheader />
@@ -29,17 +64,37 @@ function Add_product() {
             <section className="row g-3">
               <div className="col-12 col-xl-12">
                 <div className='panel'>
-                  <form className="needs-validation" noValidate>
+                  <form method='post' onSubmit={submitHandel}>
                     <div className="row g-3">
                       <div className="col-md-12">
+                        <label className="form-label" htmlFor="formName">Select Category</label>
+                        <select  className="form-control" name="cate_id" onChange={changeHandel}>
+                          <option value="">------ Select Category ------</option>
+                          {
+                            data.map((value)=>{
+                              return(
+                                  <option value={value.id}>{value.name}</option>
+                              )
+                            })
+                          }
+                          
+                        </select>
+                      </div>
+                      <div className="col-md-12">
                         <label className="form-label" htmlFor="formName">Product name</label>
-                        <input className="form-control" id="formName" required />
-                        <div className="invalid-feedback">Full name is required.</div>
+                        <input className="form-control" value={formValue.name} onChange={changeHandel} name="name" id="formName" />
+                      </div>
+                      <div className="col-md-12">
+                        <label className="form-label" htmlFor="formName">Product Price</label>
+                        <input className="form-control" value={formValue.price} onChange={changeHandel} name="price" id="formName" />
+                      </div>
+                      <div className="col-md-12">
+                        <label className="form-label" htmlFor="formName">Product Description</label>
+                        <textarea className="form-control" value={formValue.description} onChange={changeHandel} name="description"></textarea>
                       </div>
                       <div className="col-md-12">
                         <label className="form-label" htmlFor="formEmail">Product Image Upload</label>
-                        <input className="form-control" id="formEmail" type="file" required />
-                        <div className="invalid-feedback">Valid file is required.</div>
+                        <input className="form-control" value={formValue.image} onChange={changeHandel} name="image" id="formEmail" type="url" />
                       </div>
 
                     </div>
