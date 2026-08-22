@@ -4,6 +4,7 @@ import ANav from '../component/ANav'
 import Aheader from '../component/Aheader'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import swal from 'sweetalert';
 
 function Manage_user() {
 
@@ -20,6 +21,11 @@ function Manage_user() {
 
   const deletedata = async (id) => {
     const res = await axios.delete(`http://localhost:3000/user/${id}`);
+    swal({
+      title: "Success!",
+      text: "Delete Success !",
+      icon: "success",
+    });
     getdata();
     return res;
   }
@@ -29,7 +35,11 @@ function Manage_user() {
     if (res.data.status == "Block") {
       const upd_data = { status: "Unblock" }
       const upd = await axios.patch(`http://localhost:3000/user/${id}`, upd_data);
-      alert('Status Unblock Success');
+      swal({
+        title: "Success!",
+        text: "Status Unblock Success!",
+        icon: "success",
+      });
       getdata();
       return false;
     }
@@ -40,6 +50,11 @@ function Manage_user() {
       sessionStorage.removeItem('uid');
       sessionStorage.removeItem('uname');
       getdata();
+      swal({
+        title: "Success!",
+        text: "Status Block Success!",
+        icon: "success",
+      });
       return false;
     }
   }

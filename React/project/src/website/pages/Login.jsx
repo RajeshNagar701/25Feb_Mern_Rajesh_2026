@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import swal from 'sweetalert';
 
 function Login() {
 
@@ -25,24 +26,41 @@ function Login() {
                 if (res.data[0].status == "Unblock") {
                     sessionStorage.setItem('uid', res.data[0].id);
                     sessionStorage.setItem('uname', res.data[0].name);
-                    alert('Login Success !');
+                    swal({
+                        title: "Good job!",
+                        text: "Login Success !",
+                        icon: "success",
+                    });
                     return redirect('/');
                 }
                 else {
                     setFormvalue({ ...formValue, email: "", password: "" });
-                    alert('Login Failed ! Block Account, Contact Customer Care !');
+                    swal({
+                        title: "Failed!",
+                        text: "Login Failed ! Block Account, Contact Customer Care !",
+                        icon: "error",
+                    });
                     return false;
                 }
             }
             else {
                 setFormvalue({ ...formValue, email: "", password: "" });
-                alert('Login Failed ! Password Missmatch !');
+                swal({
+                    title: "Failed!",
+                    text: "Login Failed ! Password Missmatch !",
+                    icon: "error",
+                });
+                alert('');
                 return false;
             }
         }
         else {
             setFormvalue({ ...formValue, email: "", password: "" });
-            alert('Login Failed ! Email dose not exits !');
+            swal({
+                title: "Failed!",
+                text: "Login Failed ! Email dose not exits !",
+                icon: "error",
+            });
             return false;
         }
     }

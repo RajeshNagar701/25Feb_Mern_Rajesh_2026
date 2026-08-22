@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import swal from 'sweetalert';
 
 function Signup() {
 
@@ -12,15 +13,19 @@ function Signup() {
     });
 
     const changeHandel = (e) => {
-        setFormvalue({ ...formValue, id: new Date().getTime().toString(),status:"Unblock", [e.target.name]: e.target.value });
+        setFormvalue({ ...formValue, id: new Date().getTime().toString(), status: "Unblock", [e.target.name]: e.target.value });
         console.log(formValue);
     }
 
     const submitHandel = async (e) => {
         e.preventDefault();  // not refresh after form submit
         const res = await axios.post(`http://localhost:3000/user`, formValue);
-        setFormvalue({ ...formValue, name: "", email: "",password:"",mobile:"" });
-        alert('Signup Success');
+        setFormvalue({ ...formValue, name: "", email: "", password: "", mobile: "" });
+        swal({
+            title: "Good job!",
+            text: "Signup Success !",
+            icon: "success",
+        });
         return false;
     }
 
