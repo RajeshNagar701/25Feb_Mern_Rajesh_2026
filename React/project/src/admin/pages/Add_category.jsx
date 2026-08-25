@@ -4,25 +4,43 @@ import ANav from '../component/ANav'
 import Aheader from '../component/Aheader'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 function Add_category() {
 
-  const [formValue,setFormvalue]=useState({
-    name:"",
-    image:""
+  const [formValue, setFormvalue] = useState({
+    name: "",
+    image: ""
   });
 
-  const changeHandel=(e)=>{
-      setFormvalue({...formValue,id:new Date().getTime().toString(),[e.target.name]:e.target.value});
-      console.log(formValue);
+  const changeHandel = (e) => {
+    setFormvalue({ ...formValue, id: new Date().getTime().toString(), [e.target.name]: e.target.value });
+    console.log(formValue);
   }
 
-  const submitHandel=async(e)=>{
+  let validation = () => {
+    let result = true;
+    if (formValue.name == "" || formValue.name == null) {
+      result = false;
+      toast.error('Category Name Field is required !')
+      return false;
+    }
+    if (formValue.image == "" || formValue.image == null) {
+      result = false;
+      toast.error('Upload Image Field is required !')
+      return false;
+    }
+    return result;
+  }
+
+  const submitHandel = async (e) => {
     e.preventDefault();  // not refresh after form submit
-    const res=await axios.post(`http://localhost:3000/category`,formValue);
-    setFormvalue({...formValue,name:"",image:""});
-    alert('Category Added Success');
-    return false;
+    if (validation()) {
+      const res = await axios.post(`http://localhost:3000/category`, formValue);
+      setFormvalue({ ...formValue, name: "", image: "" });
+      alert('Category Added Success');
+      return false;
+    }
   }
 
 

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
 import swal from 'sweetalert';
 
 function Login() {
@@ -15,53 +16,56 @@ function Login() {
         console.log(formValue);
     }
 
+    let validation = () => {
+        let result = true;
+        if (formValue.email == "" || formValue.email == null) {
+            result = false;
+            toast.error('Email Field is required !')
+            return false;
+        }
+        if (formValue.password == "" || formValue.password == null) {
+            result = false;
+            toast.error('Password Field is required !')
+            return false;
+        }
+        return result;
+    }
     const redirect = useNavigate(); // for any page redirect
     const submitHandel = async (e) => {
         e.preventDefault();
-        const res = await axios.get(`http://localhost:3000/user?email=${formValue.email}`,);
-        //console.log(res.data);
-        if (res.data.length > 0) {
+        if (validation()) {
+            const res = await axios.get(`http://localhost:3000/user?email=${formValue.email}`,);
+            //console.log(res.data);
+            if (res.data.length > 0) {
 
-            if (res.data[0].password == formValue.password) {
-                if (res.data[0].status == "Unblock") {
-                    sessionStorage.setItem('uid', res.data[0].id);
-                    sessionStorage.setItem('uname', res.data[0].name);
-                    swal({
-                        title: "Good job!",
-                        text: "Login Success !",
-                        icon: "success",
-                    });
-                    return redirect('/');
+                if (res.data[0].password == formValue.password) {
+                    if (res.data[0].status == "Unblock") {
+                        sessionStorage.setItem('uid', res.data[0].id);
+                        sessionStorage.setItem('uname', res.data[0].name);
+                        swal({
+                            title: "Good job!",
+                            text: "Login Success !",
+                            icon: "success",
+                        });
+                        return redirect('/');
+                    }
+                    else {
+                        setFormvalue({ ...formValue, email: "", password: "" });
+                        toast.error('Login Failed ! Block Account, Contact Customer Care !')
+                        return false;
+                    }
                 }
                 else {
                     setFormvalue({ ...formValue, email: "", password: "" });
-                    swal({
-                        title: "Failed!",
-                        text: "Login Failed ! Block Account, Contact Customer Care !",
-                        icon: "error",
-                    });
+                    toast.error('Login Failed ! Password Missmatch !')
                     return false;
                 }
             }
             else {
                 setFormvalue({ ...formValue, email: "", password: "" });
-                swal({
-                    title: "Failed!",
-                    text: "Login Failed ! Password Missmatch !",
-                    icon: "error",
-                });
-                alert('');
+                toast.error('Login Failed ! Email dose not exits !')
                 return false;
             }
-        }
-        else {
-            setFormvalue({ ...formValue, email: "", password: "" });
-            swal({
-                title: "Failed!",
-                text: "Login Failed ! Email dose not exits !",
-                icon: "error",
-            });
-            return false;
         }
     }
 

@@ -21,12 +21,15 @@ import Manage_booking from "./admin/pages/Manage_booking";
 import User_profile from "./website/pages/User_profile";
 import Edit_profile from "./website/pages/Edit_profile";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <>
 
       <BrowserRouter>
+        <ToastContainer></ToastContainer>
         <Routes>
           {
             // website routes
@@ -54,7 +57,7 @@ function App() {
           <Route path="/manage_user" element={<><Manage_user /></>}></Route>
           <Route path="/manage_order" element={<><Manage_order /></>}></Route>
           <Route path="/manage_booking" element={<><Manage_booking /></>}></Route>
-          
+
         </Routes>
       </BrowserRouter>
 
