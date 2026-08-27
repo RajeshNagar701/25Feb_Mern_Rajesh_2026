@@ -23,6 +23,10 @@ import Edit_profile from "./website/pages/Edit_profile";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Uafter_login from "./website/component/Uafter_login";
+import Ubefore_login from "./website/component/Ubefore_login";
+import Abefore_login from "./admin/component/Abefore_login";
+import Aafter_login from "./admin/component/Aafter_login";
 
 function App() {
   return (
@@ -39,25 +43,34 @@ function App() {
           <Route path="/about" element={<><Header /><About /><Footer /></>}></Route>
           <Route path="/menu" element={<><Header /><Menu /><Footer /></>}></Route>
           <Route path="/book" element={<><Header /><Book /><Footer /></>}></Route>
-          <Route path="/login" element={<><Header /><Login /><Footer /></>}></Route>
-          <Route path="/signup" element={<><Header /><Signup /><Footer /></>}></Route>
-          <Route path="/user_profile" element={<><Header /><User_profile /><Footer /></>}></Route>
-          <Route path="/edit_profile/:id" element={<><Header /><Edit_profile /><Footer /></>}></Route>
+
+          <Route element={<Ubefore_login />}>
+            <Route path="/login" element={<><Header /><Login /><Footer /></>}></Route>
+            <Route path="/signup" element={<><Header /><Signup /><Footer /></>}></Route>
+          </Route>
+
+          <Route element={<Uafter_login />}>
+            <Route path="/user_profile" element={<><Header /><User_profile /><Footer /></>}></Route>
+            <Route path="/edit_profile/:id" element={<><Header /><Edit_profile /><Footer /></>}></Route>
+          </Route>
 
           {
             // Admin routes
           }
-          <Route path="/admin-login" element={<><Admin_login /></>}></Route>
-          <Route path="/dashboard" element={<><Dashboard /></>}></Route>
-          <Route path="/add_category" element={<><Add_category /></>}></Route>
-          <Route path="/manage_category" element={<><Manage_category /></>}></Route>
-          <Route path="/add_product" element={<><Add_product /></>}></Route>
-          <Route path="/manage_product" element={<><Manage_product /></>}></Route>
+          <Route element={<Abefore_login/>}>
+            <Route path="/admin-login" element={<><Admin_login /></>}></Route>
+          </Route>
 
-          <Route path="/manage_user" element={<><Manage_user /></>}></Route>
-          <Route path="/manage_order" element={<><Manage_order /></>}></Route>
-          <Route path="/manage_booking" element={<><Manage_booking /></>}></Route>
-
+          <Route element={<Aafter_login/>}>
+            <Route path="/dashboard" element={<><Dashboard /></>}></Route>
+            <Route path="/add_category" element={<><Add_category /></>}></Route>
+            <Route path="/manage_category" element={<><Manage_category /></>}></Route>
+            <Route path="/add_product" element={<><Add_product /></>}></Route>
+            <Route path="/manage_product" element={<><Manage_product /></>}></Route>
+            <Route path="/manage_user" element={<><Manage_user /></>}></Route>
+            <Route path="/manage_order" element={<><Manage_order /></>}></Route>
+            <Route path="/manage_booking" element={<><Manage_booking /></>}></Route>
+          </Route>
         </Routes>
       </BrowserRouter>
 

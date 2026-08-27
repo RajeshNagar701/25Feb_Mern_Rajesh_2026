@@ -1,14 +1,19 @@
-import React from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
+import swal from 'sweetalert';
 
 function Header() {
 
     const redirect=useNavigate();
-    const user_logout=()=>{
+    const user_logout = () => {
         sessionStorage.removeItem('uid');
         sessionStorage.removeItem('uname');
-        alert('Logout Success !');
-        return redirect('/');
+        swal({
+            title: "Success!",
+            text: "Logout Success !",
+            icon: "success",
+        }).then(() => {
+            redirect('/');
+        });
     }
 
     return (

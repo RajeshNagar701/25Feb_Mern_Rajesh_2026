@@ -46,8 +46,7 @@ function Login() {
                             title: "Good job!",
                             text: "Login Success !",
                             icon: "success",
-                        });
-                        return redirect('/');
+                        }).then(()=> redirect('/'));
                     }
                     else {
                         setFormvalue({ ...formValue, email: "", password: "" });

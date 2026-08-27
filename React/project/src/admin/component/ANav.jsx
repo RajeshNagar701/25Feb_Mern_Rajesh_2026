@@ -1,7 +1,20 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import swal from 'sweetalert';
+
 
 function ANav() {
+    const redirect = useNavigate();
+    const admin_logout = () => {
+        sessionStorage.removeItem('aid');
+        sessionStorage.removeItem('aname');
+        swal({
+            title: "Success!",
+            text: "Logout Success !",
+            icon: "success",
+        }).then(() => {
+            redirect('/admin-login');
+        });
+    }
     return (
         <nav className="navbar admin-navbar navbar-expand bg-white">
             <div className="container-fluid px-3 px-lg-4">
@@ -40,14 +53,13 @@ function ANav() {
                     </div>
                     <div className="dropdown">
                         <button className="profile-button dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img className="avatar-img avatar-sm" src="../assets/images/avatar/avatar.jpg" alt="Admin Hasan" />
-                            <span className="profile-name d-none d-sm-inline">Admin Hasan</span>
+                            <span className="profile-name d-none d-sm-inline">{sessionStorage.getItem('aid')} : {sessionStorage.getItem('aname')}</span>
                         </button>
                         <ul className="dropdown-menu dropdown-menu-end">
                             <li><a className="dropdown-item" href="profile.html">Profile</a></li>
                             <li><a className="dropdown-item" href="settings.html">Account settings</a></li>
                             <li><hr className="dropdown-divider" /></li>
-                            <li><NavLink className="dropdown-item" to="/admin-login">Sign out</NavLink></li>
+                            <li><NavLink className="dropdown-item" to="#" onClick={admin_logout}>Sign out</NavLink></li>
                         </ul>
                     </div>
                 </div>

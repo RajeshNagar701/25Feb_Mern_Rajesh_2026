@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
 import swal from 'sweetalert';
 
 function Admin_login() {
@@ -15,31 +16,33 @@ function Admin_login() {
   }
 
   const redirect = useNavigate(); // for any page redirect
+
   const submitHandel = async (e) => {
     e.preventDefault();
-    const res = await axios.get(`http://localhost:3000/admin?email=${formValue.email}`,);
-    //console.log(res.data);
+    const res = await axios.get(`http://localhost:3000/admin?email=${formValue.email}`);
     if (res.data.length > 0) {
-
       if (res.data[0].password == formValue.password) {
-        sessionStorage.setItem('uid', res.data[0].id);
-        sessionStorage.setItem('uname', res.data[0].name);
-
-        alert('Login Success !');
-        return redirect('/');
+        sessionStorage.setItem('aid', res.data[0].id);
+        sessionStorage.setItem('aname', res.data[0].name);
+        swal({
+          title: "Good job!",
+          text: "Login Success !",
+          icon: "success",
+        }).then(() => redirect('/dashboard'));
       }
       else {
         setFormvalue({ ...formValue, email: "", password: "" });
-        alert('Login Failed ! Password Missmatch !');
+        toast.error('Login Failed ! Password Missmatch !')
         return false;
       }
     }
     else {
       setFormvalue({ ...formValue, email: "", password: "" });
-      alert('Login Failed ! Email dose not exits !');
+      toast.error('Login Failed ! Email dose not exits !')
       return false;
     }
   }
+
   return (
     <div className="auth-body">
       <button className="icon-button theme-toggle auth-theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme" title="Switch color theme">
@@ -48,7 +51,7 @@ function Admin_login() {
       <main className="auth-page">
         <section className="auth-card">
           <a className="auth-brand" href="index.html"><span className="brand-icon"><i className="bi bi-grid-1x2-fill" aria-hidden="true" /></span><span><strong>adminHMD</strong><small>Sign in to your admin workspace.</small></span></a>
-          <form className="needs-validation" noValidate>
+          <form method='post' className="needs-validation" noValidate onSubmit={submitHandel}>
             <div className="mb-4">
               <p className="eyebrow mb-1">Secure Access</p>
               <h1 className="h3 mb-1">Login</h1>
@@ -56,14 +59,15 @@ function Admin_login() {
             </div>
             <div className="mb-3">
               <label className="form-label" htmlFor="loginEmail">Email address</label>
-              <input className="form-control" id="loginEmail" type="email" required />
+              <input value={formValue.email} onChange={changeHandel} name='email' className="form-control" id="loginEmail" type="email" required />
               <div className="invalid-feedback">Enter a valid email.</div>
             </div>
             <div className="mb-3">
-              <div className="d-flex justify-content-between"><label className="form-label" htmlFor="loginPassword">Password</label>
+              <div className="d-flex justify-content-between">
+                <label className="form-label" htmlFor="loginPassword">Password</label>
                 <a className="small fw-semibold" href="forgot-password.html">Forgot?</a>
               </div>
-              <input className="form-control" id="loginPassword" type="password" minLength={6} required />
+              <input value={formValue.password} onChange={changeHandel} name='password' className="form-control" id="loginPassword" type="password" required />
               <div className="invalid-feedback">Password must be at least 6 characters.</div>
             </div>
             <div className="form-check mb-4">
@@ -72,7 +76,6 @@ function Admin_login() {
             </div>
             <button className="btn btn-primary w-100" type="submit"><i className="bi bi-box-arrow-in-right" aria-hidden="true" /> Sign In</button>
           </form>
-          <div className="auth-footer">New here? <a href="register.html">Create an account</a></div>
         </section>
       </main>
     </div>

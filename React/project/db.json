@@ -142,6 +142,7 @@
   "admin": [
     {
       "id": "1",
+      "name": "Admin Raja",
       "email": "admin@gmail.com",
       "password": "1234"
     }
