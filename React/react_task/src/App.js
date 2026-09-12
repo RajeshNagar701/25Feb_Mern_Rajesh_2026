@@ -51,8 +51,6 @@ function App() {
         //routing
         <App_routing/>
       }
-     
-      
 
     </div>
   );
