@@ -25,15 +25,30 @@ export const categorySlice = createSlice({
   name: 'category',
   initialState: {
     cate_arr: [],
+    loading: false,
+    error: null
   },
   reducers: {
 
   },
   extraReducers:
     (builder) => {
+
+      builder.addCase(get_category.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      });
+
       builder.addCase(get_category.fulfilled, (state, action) => {
         state.cate_arr = action.payload;
-      })
+        state.loading = false;
+      });
+
+      builder.addCase(get_category.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
+
     }
 
 })

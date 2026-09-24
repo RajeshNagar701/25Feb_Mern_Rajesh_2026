@@ -12,7 +12,7 @@ function Manage_product() {
     useEffect(() => {
         dispatch(get_category())
         dispatch(get_product())
-    });
+    },[]);
 
     const { prod_arr } = useSelector((state) => { return state.product });
     const { cate_arr } = useSelector((state) => { return state.category });
@@ -20,6 +20,7 @@ function Manage_product() {
     const deletedata = async (id) => {
         dispatch(del_product(id));
         toast.success('Product Deleted Success');
+        dispatch(get_product())
     }
 
 
@@ -71,6 +72,7 @@ function Manage_product() {
 
             // call cateSlice insert function
             dispatch(upd_product(formValue));
+            dispatch(get_product())
             toast.success('Product Updated Success');
             return false;
         }

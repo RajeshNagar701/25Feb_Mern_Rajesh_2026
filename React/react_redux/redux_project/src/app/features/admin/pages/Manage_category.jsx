@@ -9,18 +9,18 @@ function Manage_category() {
     const dispatch = useDispatch(); // we can access any slice function
     useEffect(() => {
         dispatch(get_category())
-    });
+    },[]);
 
-    const { cate_arr } = useSelector((state) => { return state.category })
+    const { cate_arr, loading } = useSelector((state) => { return state.category })
 
     const deletedata = async (id) => {
         dispatch(del_category(id));
         toast.success('Category Deleted Success');
     }
 
-    
+
     const editdata = async (id) => {
-        const filterData=cate_arr.filter((value)=> value.id==id);
+        const filterData = cate_arr.filter((value) => value.id == id);
         setFormValue(filterData[0]);
     }
 
@@ -79,8 +79,17 @@ function Manage_category() {
                                     </tr>
                                 </thead>
                                 <tbody>
+
+                                    {loading && (
+                                        <div className="spinner">
+                                            Loading...
+                                        </div>
+                                    )}
+
                                     {
-                                        cate_arr.map((value) => {
+
+
+                                        !loading && cate_arr.map((value) => {
                                             return (
                                                 <tr>
                                                     <td>{value.id}</td>
