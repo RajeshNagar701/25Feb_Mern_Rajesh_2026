@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +24,41 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+      <body className="min-h-full flex flex-col">
+
+        <div>
+          <div className="p-5 bg-primary text-white text-center">
+            <h1>My First Bootstrap 5 Page</h1>
+            <p>Resize this responsive page to see the effect!</p>
+          </div>
+          <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+            <div className="container-fluid">
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <Link className="nav-link" href="/">Home</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href="/about">About</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href="/contact">Contact</Link>
+                </li>
+                
+              </ul>
+            </div>
+          </nav>
+        </div>
+
+        {children}
+
+        <div className="mt-5 p-4 bg-dark text-white text-center">
+          <p>Footer</p>
+        </div>
+
+      </body>
     </html>
   );
 }
