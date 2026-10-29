@@ -15,10 +15,7 @@ Own Modules or Local Modules
 // import
 
 var date=require('./todayDate.js');
-
-var result=date();
-
-console.log(result);
+console.log(date());
 
 
  

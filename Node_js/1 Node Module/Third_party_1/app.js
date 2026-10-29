@@ -27,7 +27,7 @@ console.log(validator.isEmail('foo@bar.com'));
 // Importing module
 const chalk=require("chalk");
 
-// Printing the text
+// Printing the text   npm i chalk
 console.log(chalk.red("aayush"))
 console.log(chalk.red.underline("aayush"))
 console.log(chalk.red.underline.bold("GFG"))

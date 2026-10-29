@@ -26,4 +26,9 @@ publish them to repositories like Github for access to distributed machines
 
 */
 
-console.log('hello Index');
+const axios = require('axios');
+
+axios.get('https://jsonplaceholder.typicode.com/posts')
+  .then(response => {
+    console.log(response.data);
+  })
